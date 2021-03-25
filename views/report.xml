@@ -1,0 +1,87 @@
+<odoo>
+
+    <report string="Movie Report"
+            id="action_custom_movie_report"
+            model="iti_netflix.movies"
+            menu="True"
+            report_type="qweb-pdf"
+            name="iti_netflix.my_movie_name"
+            print_report_name="(object._get_my_report_name())"
+    />
+
+
+    <template id="my_movie_name_document">
+
+        <t t-call="web.external_layout">
+
+            <div class="page">
+
+                <h2 class="text-center" style="color:black">
+                    <span>MOVIE-
+                        <t t-esc="my_obj.name"/>
+                    </span>
+                </h2>
+
+                <div class="pull-left">
+                    <span>Production Date :</span>
+                    <t t-esc="my_obj.production_year"/>
+                </div>
+
+                <div class="pull-right">
+                    <span>Price :</span>
+                    <t t-esc="my_obj.subscription_price"/>
+                </div>
+
+ 
+
+            </div>
+
+            <p style="page-break-before:always;float: none;"/>
+
+               <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Cast</th>
+                            <th>Age</th>
+                            <th>Address</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="my_obj.cast_ids" t-as="cast">
+                            <tr>
+                                <td>
+                                    <t t-esc="cast.name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="cast.age"/>
+                                </td>
+                                <td>
+                                    <t t-esc="cast.address"/>
+                                </td>
+                            </tr>
+                        </t>
+
+
+                    </tbody>
+
+                </table>
+        </t>
+
+    </template>
+
+
+    <template id="iti_netflix.my_movie_name">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="my_obj">
+                <t t-call="iti_netflix.my_movie_name_document"/>
+            </t>
+
+        </t>
+
+    </template>
+
+
+</odoo>

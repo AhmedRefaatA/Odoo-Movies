@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <record id="iti_netflix.custom_search_view" model="ir.ui.view">
+        <field name="name">search view</field>
+        <field name="model">iti_netflix.movies</field>
+
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="cast_ids"/>
+                <field name="country_id"/>
+            </search>
+
+        </field>
+    </record>
+</odoo>

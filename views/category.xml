@@ -1,0 +1,31 @@
+<odoo>
+
+
+    <record id="iti_netflix.category_form_view" model="ir.ui.view">
+        <field name="name">Category form</field>
+        <field name="model">iti_netflix.movies.categories</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="movies_ids"/>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="iti_netflix.category_action_window">
+        <field name="name">Categories</field>
+        <field name="res_model">iti_netflix.movies.categories</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Categories List" id="iti_netflix.category_list_sub" parent="iti_netflix.menu_1"
+              action="iti_netflix.category_action_window"/>
+</odoo>
